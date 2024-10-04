@@ -1,13 +1,14 @@
 const express = require('express');
-const { getAllMovies, getMovieWithReviews, searchMoviesByName } = require('../controller/movie.controller'); 
+const { addMovie, getAllMovies, searchMoviesByName , updateMovie, deleteMovie} = require('../controller/movie.controller'); 
 
-const router = express.Router();
+const movieRouter = express.Router();
 
-router.get('/', getAllMovies);
+movieRouter.post('/', addMovie);
+movieRouter.get('/', getAllMovies);
+movieRouter.put('/:id', updateMovie);
+movieRouter.delete('/:id', deleteMovie);
+movieRouter.get('/search', searchMoviesByName);
 
-router.get('/:id', getMovieWithReviews);
-
-router.get('/search', searchMoviesByName);
 
 
-module.exports = router;
+module.exports = movieRouter;

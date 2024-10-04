@@ -1,8 +1,12 @@
 const express = require('express');
-const { addReview } = require('../controller/review.controller'); 
+const { addReview, getMovieWithReviews , deleteReview} = require('../controller/review.controller'); 
 
-const router = express.Router();
+const reviewRouter = express.Router();
 
-router.post('/', addReview);
+reviewRouter.get('/', getMovieWithReviews)
+reviewRouter.post('/', addReview);
+reviewRouter.delete(':movieId/review/:reviewIndex', deleteReview)
 
-module.exports = router;
+
+
+module.exports = reviewRouter;
